@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: {{ .Values.label_val }}
+  name: {{ .Values.deploy_name }}
+spec:
+  replicas: {{ .Values.replicaNumber }}
+  selector:
+    matchLabels:
+      app: {{ .Values.label_val }}
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+         app: {{ .Values.label_val }}
+    spec:
+      containers:
+      - image: "ak1332/flask-cli"
+        name: flask-cli
+        resources: {}
+status: {}
